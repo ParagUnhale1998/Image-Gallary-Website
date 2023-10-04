@@ -1,0 +1,9 @@
+<nav>
+  <img src="../../assets/logo.png" alt="">
+  <div class="navbar-search">
+    <input class="search-input" type="text" placeholder="Search Images ... City , Street , Nature" #searchInput (keyup.enter)="searchPhotos(searchInput.value)">
+    <button class="search-button" type="button" (click)="searchPhotos(searchInput.value)">Search</button>
+  </div>
+  <h2>Images World </h2>
+  <img class="logoExtra" src="../../assets/logo3.png">
+</nav>

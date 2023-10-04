@@ -1,18 +1,4 @@
-import { Component,OnInit } from '@angular/core';
-import { ApiService } from './service/api.service';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit{
-  title = 'ImageGallayApi';
-  // images!: any[];
-  images: any[] = [];
-
-  
-  defaultImages:any[] = [
+[
     {
         "id": 17550389,
         "width": 4640,
@@ -344,55 +330,3 @@ export class AppComponent implements OnInit{
         "alt": "Processed with VSCO with e3 preset"
     }
 ]
-isApiDataLoaded = false;
-
-  receiveData(data: any): void {
-    this.images = data
-    // Do any additional processing with the received data
-  }
-  // page: number = 1;
-  constructor(private imagesApi:ApiService){
-
-  }
-  ngOnInit(): void {
-    //  Specify the current page number
-    this.imagesApi.getImage(this.imagesApi.page).subscribe(response => {
-      console.log(response.photos)
-      this.imagesApi.imagesArray = response.photos;
-      this.images =  this.imagesApi.imagesArray
-      this.isApiDataLoaded = true;
-      console.log(this.imagesApi.imagesArray,this.images)
-    });
-  }
-  
-  downloadImg(src: any): void {
-    this.imagesApi.downloadImage(src);
-  }
-
-  loadMoreImages(): void {
-    this.imagesApi.page++;
-    this.imagesApi.loadMoreImages(this.imagesApi.page)
-      .subscribe({
-        next: (data: any) => {
-          // Handle the API response here
-          console.log(data);
-          // this.images = [...this.images,data.photos]
-          this.images = [...this.imagesApi.imagesArray, ...data.photos]; // Concatenate the arrays using spread operator
-
-          // this.images.push(data.photos);
-        },
-        error: (error: any) => {
-          // Handle any errors
-          console.error(error);
-        }
-      });
-  }
-  
-  
-  }
-  
-  
-
-  
-
-

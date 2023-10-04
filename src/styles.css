@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right , rgb(0, 145, 255),white);
+    /* background-image: url(assets/bg/concrete-wall-2.png); */
+}
